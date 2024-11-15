@@ -1,4 +1,4 @@
-# LC0523_Continuous_Subarray_Sum.py
+# LC00523_Continuous_Subarray_Sum.py
 # Given an integer array nums and an integer k, return true if nums has a good subarray or false otherwise.
 
 # A good subarray is a subarray where:
