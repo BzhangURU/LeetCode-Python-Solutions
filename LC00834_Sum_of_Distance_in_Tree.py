@@ -102,7 +102,7 @@ class Solution:
 
         #print(node2countNodesInSubtree)
 
-        # breath first search again to get answer[i]
+        # breath first search again to get answer[i], i>0
         nodes_in_same_depth.clear()
         nodes_in_same_depth.append(0)
         depth=0
@@ -110,7 +110,6 @@ class Solution:
             length=len(nodes_in_same_depth)
             for j in range(length):
                 node=nodes_in_same_depth.popleft()
-                #answer[i]+=depth
                 for node_child in dict_node2neighbors[node]:
                     if node2depth[node_child]==depth+1:#child, not parent
                         nodes_in_same_depth.append(node_child)
