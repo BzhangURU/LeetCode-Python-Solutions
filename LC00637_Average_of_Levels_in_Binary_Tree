@@ -1,0 +1,59 @@
+# LC00637_Average_of_Levels_in_Binary_Tree
+
+# Given the root of a binary tree, return the average value of the nodes on each level in 
+# the form of an array. Answers within 10-5 of the actual answer will be accepted.
+ 
+
+# Example 1:
+
+
+# Input: root = [3,9,20,null,null,15,7]
+# Output: [3.00000,14.50000,11.00000]
+# Explanation: The average value of nodes on level 0 is 3, on level 1 is 14.5, and on level 2 is 11.
+# Hence return [3, 14.5, 11].
+# Example 2:
+
+
+# Input: root = [3,9,20,15,7]
+# Output: [3.00000,14.50000,11.00000]
+ 
+
+# Constraints:
+
+# The number of nodes in the tree is in the range [1, 104].
+# -2**31 <= Node.val <= 2**31 - 1
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+# Idea: BFS
+from collections import deque
+class Solution:
+    def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
+        result=[]
+        my_q=deque()
+        if root==None:
+            return result
+        my_q.append(root)
+
+        while my_q:
+            length=len(my_q)
+            layer_sum=0
+            layer_count=0
+            for i in range(length):
+                node=my_q.popleft()
+                if node.left is not None:
+                    my_q.append(node.left)
+                if node.right is not None:
+                    my_q.append(node.right)
+                layer_count+=1
+                layer_sum+=node.val
+            result.append(layer_sum/layer_count)
+        return result
+
+
+
